@@ -1,5 +1,5 @@
 /*  */
-import 'babel-polyfill';
+// import 'babel-polyfill';
 
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -30,7 +30,7 @@ export default class App extends React.Component {
 
   }
 
-  getWeather = async (e) =>{
+  async getWeather (e){
     e.preventDefault();
     const city = e.target.elements.city.value
     const country = e.target.elements.country.value
