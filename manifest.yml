@@ -7,7 +7,7 @@ packages:
         web: 'yes'
         runtime: 'nodejs:10'
         inputs:
-          API_KEY: $DARKSKY_API_KEY
+          API_KEY: $API_KEY
           LOG_LEVEL: debug
         annotations:
           final: true

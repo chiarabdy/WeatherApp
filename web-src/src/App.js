@@ -6,6 +6,8 @@ import Weather from './components/Weather'
 
 import actions from './config.json'
 
+// const API_KEY ="a0b6a9dab659bfe46cbd4813755b597a";
+
 export default class App extends React.Component {
   constructor (props) {
     super(props)
@@ -23,6 +25,14 @@ export default class App extends React.Component {
         <pre>{ componentStack + '\n' + error.message }</pre>
       </React.Fragment>
     )
+    getWeather = async (e)=>{
+      e.preventDefault();
+      const city = e.target.elements.city.value
+      const country = e.target.elements.country.value
+      const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`)
+      const data = await api_call.json(); 
+      console.log(data)
+    }
   }
   
 
@@ -35,8 +45,9 @@ export default class App extends React.Component {
   render () {
     return (
       <ErrorBoundary onError={this.onError} FallbackComponent={this.fallbackComponent} >
-      <Weather title="Hello, Adobe IO"/>
-        <h1>WeatherApp</h1>
+      <Weather  title="Hello, Adobe IO"
+                getWeather={this.getWeather}
+      />
         {/* <pre>this.props.runtime &eq;{JSON.stringify(this.props.runtime, 0, '\t')}</pre> */}
       </ErrorBoundary>
     )

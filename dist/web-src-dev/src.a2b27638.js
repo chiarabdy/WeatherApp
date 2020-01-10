@@ -32895,7 +32895,17 @@ function (_Component) {
   _createClass(Weather, [{
     key: "render",
     value: function render() {
-      return _react.default.createElement("div", null, _react.default.createElement("h1", null, this.props.title));
+      return _react.default.createElement("div", null, _react.default.createElement("h1", null, this.props.title), _react.default.createElement("form", {
+        onSubmit: this.props.getWeather
+      }, _react.default.createElement("input", {
+        type: "txt",
+        name: "city",
+        placeholder: "cities"
+      }), _react.default.createElement("input", {
+        type: "txt",
+        name: "country",
+        placeholder: "cities"
+      }), _react.default.createElement("button", null, "Get Weather")));
     }
   }]);
 
@@ -32926,6 +32936,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -32942,6 +32956,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+// const API_KEY ="a0b6a9dab659bfe46cbd4813755b597a";
 var App =
 /*#__PURE__*/
 function (_React$Component) {
@@ -32970,6 +32985,45 @@ function (_React$Component) {
       }, "Something went wrong :("), _react.default.createElement("pre", null, componentStack + '\n' + error.message));
     };
 
+    getWeather =
+    /*#__PURE__*/
+    function () {
+      var _ref2 = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee(e) {
+        var city, country, api_call, data;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                e.preventDefault();
+                city = e.target.elements.city.value;
+                country = e.target.elements.country.value;
+                _context.next = 5;
+                return fetch("http://api.openweathermap.org/data/2.5/weather?q=".concat(city, ",").concat(country, "&appid=").concat(API_KEY, "&units=metric"));
+
+              case 5:
+                api_call = _context.sent;
+                _context.next = 8;
+                return api_call.json();
+
+              case 8:
+                data = _context.sent;
+                console.log(data);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function getWeather(_x) {
+        return _ref2.apply(this, arguments);
+      };
+    }();
+
     return _this;
   }
 
@@ -32980,8 +33034,9 @@ function (_React$Component) {
         onError: this.onError,
         FallbackComponent: this.fallbackComponent
       }, _react.default.createElement(_Weather.default, {
-        title: "Hello, Adobe IO"
-      }), _react.default.createElement("h1", null, "WeatherApp"));
+        title: "Hello, Adobe IO",
+        getWeather: this.getWeather
+      }));
     }
   }], [{
     key: "propTypes",
@@ -33073,7 +33128,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60514" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62623" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
