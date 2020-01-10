@@ -1,0 +1,13 @@
+packages:
+  __APP_PACKAGE__:
+    license: Apache-2.0
+    actions:
+      WeatherApp:
+        function: actions\WeatherApp\index.js
+        web: 'yes'
+        runtime: 'nodejs:10'
+        inputs:
+          API_KEY: $DARKSKY_API_KEY
+          LOG_LEVEL: debug
+        annotations:
+          final: true
