@@ -1,4 +1,6 @@
 /*  */
+import 'babel-polyfill';
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import ErrorBoundary from 'react-error-boundary'
@@ -6,7 +8,7 @@ import Weather from './components/Weather'
 
 import actions from './config.json'
 
-// const API_KEY ="a0b6a9dab659bfe46cbd4813755b597a";
+const API_KEY ="a0b6a9dab659bfe46cbd4813755b597a";
 
 export default class App extends React.Component {
   constructor (props) {
@@ -25,14 +27,17 @@ export default class App extends React.Component {
         <pre>{ componentStack + '\n' + error.message }</pre>
       </React.Fragment>
     )
-    getWeather = async (e)=>{
-      e.preventDefault();
-      const city = e.target.elements.city.value
-      const country = e.target.elements.country.value
-      const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`)
-      const data = await api_call.json(); 
-      console.log(data)
-    }
+
+  }
+
+  getWeather = async (e) =>{
+    e.preventDefault();
+    const city = e.target.elements.city.value
+    const country = e.target.elements.country.value
+    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`)
+    // http://api.openweathermap.org/data/2.5/weather?q=lucerne,switzerland&appid=a0b6a9dab659bfe46cbd4813755b597a&units=metric
+    const data = await api_call.json(); 
+    console.log(data)
   }
   
 
