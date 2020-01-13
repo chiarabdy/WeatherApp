@@ -9,6 +9,7 @@ import Weather from './components/Weather'
 import actions from './config.json'
 
 const API_KEY ="a0b6a9dab659bfe46cbd4813755b597a";
+const regeneratorRuntime = require("regenerator-runtime");
 
 export default class App extends React.Component {
   constructor (props) {
