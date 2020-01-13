@@ -4,17 +4,17 @@
       "type": "node",
       "request": "launch",
       "name": "Action:WeatherApp-0.0.1/WeatherApp",
-      "runtimeExecutable": "C:\\Users\\pow02817\\projects\\Test\\WeatherApp\\node_modules\\.bin\\wskdebug",
+      "runtimeExecutable": "C:\\Users\\pow02817\\projects\\WeatherApp\\node_modules\\.bin\\wskdebug",
       "env": {
-        "WSK_CONFIG_FILE": "C:\\Users\\pow02817\\projects\\Test\\WeatherApp\\.wskdebug.props.tmp"
+        "WSK_CONFIG_FILE": "C:\\Users\\pow02817\\projects\\WeatherApp\\.wskdebug.props.tmp"
       },
       "timeout": 30000,
-      "localRoot": "C:\\Users\\pow02817\\projects\\Test\\WeatherApp",
+      "localRoot": "C:\\Users\\pow02817\\projects\\WeatherApp",
       "remoteRoot": "/code",
       "outputCapture": "std",
       "runtimeArgs": [
         "WeatherApp-0.0.1/WeatherApp",
-        "C:\\Users\\pow02817\\projects\\Test\\WeatherApp\\actions\\WeatherApp\\index.js",
+        "C:\\Users\\pow02817\\projects\\WeatherApp\\actions\\WeatherApp\\index.js",
         "-v"
       ]
     },
@@ -23,10 +23,10 @@
       "request": "launch",
       "name": "Web",
       "url": "http://localhost:9080",
-      "webRoot": "C:\\Users\\pow02817\\projects\\Test\\WeatherApp\\web-src",
+      "webRoot": "C:\\Users\\pow02817\\projects\\WeatherApp\\web-src",
       "breakOnLoad": true,
       "sourceMapPathOverrides": {
-        "*": "C:\\Users\\pow02817\\projects\\Test\\WeatherApp\\dist\\web-src-dev\\*"
+        "*": "C:\\Users\\pow02817\\projects\\WeatherApp\\dist\\web-src-dev\\*"
       }
     }
   ],
