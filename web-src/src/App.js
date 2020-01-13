@@ -35,7 +35,8 @@ export default class App extends React.Component {
     e.preventDefault();
     const city = e.target.elements.city.value
     const country = e.target.elements.country.value
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`)
+    console.log(country, city)
+    const api_call = await fetch(actions.WeatherApp + `?city=${city}&country=${country}`)
     // http://api.openweathermap.org/data/2.5/weather?q=lucerne,switzerland&appid=a0b6a9dab659bfe46cbd4813755b597a&units=metric
     const data = await api_call.json(); 
     console.log(data)

@@ -27,8 +27,6 @@
 const { Core } = require('@adobe/aio-sdk')
 const fetch = require('node-fetch')
 
-
-
 async function main (params) {
   // create a Logger
   const myAppLogger = Core.Logger('main', { level: params.LOG_LEVEL })
@@ -41,8 +39,8 @@ async function main (params) {
   try {
     // replace this with the api you want to access
     // if needed apikeys and tokens can be passed to the action using default parameters and dotenv variables
-    const apiEndpoint = 'http://api.openweathermap.org/data/2.5/weather?q=${params.city},${params.country}&appid=${params.API_KEY}&units=metric'
-
+    const apiEndpoint = `http://api.openweathermap.org/data/2.5/weather?q=${params.city},${params.country}&appid=${params.API_KEY}&units=metric`
+    console.log(apiEndpoint)
     const response = await fetch(apiEndpoint)
     if (!response.ok) {
       throw new Error(`request to '${apiEndpoint}' failed with status code '${response.status}'`)

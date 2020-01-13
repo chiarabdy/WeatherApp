@@ -33733,19 +33733,20 @@ function (_React$Component) {
                 e.preventDefault();
                 city = e.target.elements.city.value;
                 country = e.target.elements.country.value;
-                _context.next = 5;
-                return fetch("http://api.openweathermap.org/data/2.5/weather?q=".concat(city, ",").concat(country, "&appid=").concat(API_KEY, "&units=metric"));
+                console.log(country, city);
+                _context.next = 6;
+                return fetch(_config.default.WeatherApp + "?city=".concat(city, "&country=").concat(country));
 
-              case 5:
+              case 6:
                 api_call = _context.sent;
-                _context.next = 8;
+                _context.next = 9;
                 return api_call.json();
 
-              case 8:
+              case 9:
                 data = _context.sent;
                 console.log(data);
 
-              case 10:
+              case 11:
               case "end":
                 return _context.stop();
             }
@@ -33832,7 +33833,7 @@ _reactDom.default.render(_react.default.createElement(_App.default, null), docum
 //   // tell the exc-runtime object we are done
 //   runtime.done()
 // }
-},{"./config.json":"src/config.json","react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./App":"src/App.js"}],"../../../AppData/Local/@adobe/aio-cli/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./config.json":"src/config.json","react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./App":"src/App.js"}],"../../../../AppData/Local/@adobe/aio-cli/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -33860,7 +33861,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62374" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63795" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -34036,5 +34037,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../AppData/Local/@adobe/aio-cli/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/index.js"], null)
+},{}]},{},["../../../../AppData/Local/@adobe/aio-cli/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/index.js"], null)
 //# sourceMappingURL=/src.a2b27638.js.map
