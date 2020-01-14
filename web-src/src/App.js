@@ -8,7 +8,7 @@ import Weather from './components/Weather'
 
 import actions from './config.json'
 
-const regeneratorRuntime = require("regenerator-runtime");
+import "regenerator-runtime/runtime";
 
 export default class App extends React.Component {
 
@@ -34,28 +34,38 @@ export default class App extends React.Component {
     const api_call = await fetch(actions.WeatherApp + `?city=${city}&country=${country}`)
     // http://api.openweathermap.org/data/2.5/weather?q=lucerne,switzerland&appid=a0b6a9dab659bfe46cbd4813755b597a&units=metric
     const data = await api_call.json(); 
-    // console.log(data)
-    this.setState({
-      temperature: data.main.temp,
-      city: data.name,
-      country: data.sys.country,
-      humidity: data.main.humidity,
-      description: data.weather[0].description,
-      error: ""
-    })
-  }
-
-  static get propTypes () {
-    return {
-      runtime: PropTypes.any
+    console.log(data)
+    if (city && country) {
+      this.setState({
+        temperature: data.main.temp,
+        city: data.name,
+        country: data.sys.country,
+        humidity: data.main.humidity,
+        description: data.weather[0].description,
+        error: ""
+      });
+    } else {
+      this.setState({
+        temperature: undefined,
+        city: undefined,
+        country: undefined,
+        humidity: undefined,
+        description: undefined,
+        error: "Please enter the values."
+      });
     }
   }
 
+  // static get propTypes () {
+  //   return {
+  //     runtime: PropTypes.any
+  //   }
+  // }
+
   render () {
     return (
-      <ErrorBoundary onError={this.onError} FallbackComponent={this.fallbackComponent} >
       <Weather
-        title="Hello, Adobe IO"
+        title="Weather Application"
         getWeather={this.getWeather.bind(this)}
         temperature={this.state.temperature}
         city={this.state.city}
@@ -64,8 +74,6 @@ export default class App extends React.Component {
         description={this.state.description}
         error={this.state.error}
       />
-        {/* <pre>this.props.runtime &eq;{JSON.stringify(this.props.runtime, 0, '\t')}</pre> */}
-      </ErrorBoundary>
     )
   }
 }

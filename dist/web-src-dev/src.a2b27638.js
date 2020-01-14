@@ -33587,6 +33587,8 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+require("regenerator-runtime/runtime");
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -33608,8 +33610,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var regeneratorRuntime = require("regenerator-runtime");
 
 var Weather =
 /*#__PURE__*/
@@ -33635,7 +33635,7 @@ function (_Component) {
         type: "txt",
         name: "country",
         placeholder: "country"
-      }), _react.default.createElement("button", null, "Get Weather"), _react.default.createElement("div", null, this.props.temperature), _react.default.createElement("div", null, this.props.city), _react.default.createElement("div", null, this.props.country), _react.default.createElement("div", null, this.props.humidity), _react.default.createElement("div", null, this.props.description)));
+      }), _react.default.createElement("button", null, "Get Weather"), _react.default.createElement("div", null, this.props.city && this.props.country && _react.default.createElement("p", null, "Location: ", this.props.city, ", ", this.props.country), this.props.temperature && _react.default.createElement("p", null, "Temperature: ", this.props.temperature), this.props.humidity && _react.default.createElement("p", null, "Humidity: ", this.props.humidity), this.props.description && _react.default.createElement("p", null, "Condition: ", this.props.description))));
     }
   }]);
 
@@ -33643,7 +33643,7 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Weather;
-},{"react":"../node_modules/react/index.js","regenerator-runtime":"../node_modules/regenerator-runtime/runtime.js"}],"src/App.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","regenerator-runtime/runtime":"../node_modules/regenerator-runtime/runtime.js"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33660,6 +33660,8 @@ var _reactErrorBoundary = _interopRequireDefault(require("react-error-boundary")
 var _Weather = _interopRequireDefault(require("./components/Weather"));
 
 var _config = _interopRequireDefault(require("./config.json"));
+
+require("regenerator-runtime/runtime");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33684,8 +33686,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var regeneratorRuntime = require("regenerator-runtime");
 
 var App =
 /*#__PURE__*/
@@ -33734,17 +33734,29 @@ function (_React$Component) {
 
               case 8:
                 data = _context.sent;
-                // console.log(data)
-                this.setState({
-                  temperature: data.main.temp,
-                  city: data.name,
-                  country: data.sys.country,
-                  humidity: data.main.humidity,
-                  description: data.weather[0].description,
-                  error: ""
-                });
+                console.log(data);
 
-              case 10:
+                if (city && country) {
+                  this.setState({
+                    temperature: data.main.temp,
+                    city: data.name,
+                    country: data.sys.country,
+                    humidity: data.main.humidity,
+                    description: data.weather[0].description,
+                    error: ""
+                  });
+                } else {
+                  this.setState({
+                    temperature: undefined,
+                    city: undefined,
+                    country: undefined,
+                    humidity: undefined,
+                    description: undefined,
+                    error: "Please enter the values."
+                  });
+                }
+
+              case 11:
               case "end":
                 return _context.stop();
             }
@@ -33757,15 +33769,17 @@ function (_React$Component) {
       }
 
       return getWeather;
-    }()
+    }() // static get propTypes () {
+    //   return {
+    //     runtime: PropTypes.any
+    //   }
+    // }
+
   }, {
     key: "render",
     value: function render() {
-      return _react.default.createElement(_reactErrorBoundary.default, {
-        onError: this.onError,
-        FallbackComponent: this.fallbackComponent
-      }, _react.default.createElement(_Weather.default, {
-        title: "Hello, Adobe IO",
+      return _react.default.createElement(_Weather.default, {
+        title: "Weather Application",
         getWeather: this.getWeather.bind(this),
         temperature: this.state.temperature,
         city: this.state.city,
@@ -33773,14 +33787,7 @@ function (_React$Component) {
         humidity: this.state.humidity,
         description: this.state.description,
         error: this.state.error
-      }));
-    }
-  }], [{
-    key: "propTypes",
-    get: function get() {
-      return {
-        runtime: _propTypes.default.any
-      };
+      });
     }
   }]);
 
@@ -33788,7 +33795,7 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = App;
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-error-boundary":"../node_modules/react-error-boundary/dist/commonjs/index.js","./components/Weather":"src/components/Weather.js","./config.json":"src/config.json","regenerator-runtime":"../node_modules/regenerator-runtime/runtime.js"}],"src/index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-error-boundary":"../node_modules/react-error-boundary/dist/commonjs/index.js","./components/Weather":"src/components/Weather.js","./config.json":"src/config.json","regenerator-runtime/runtime":"../node_modules/regenerator-runtime/runtime.js"}],"src/index.js":[function(require,module,exports) {
 "use strict";
 
 var _config = _interopRequireDefault(require("./config.json"));
@@ -33865,7 +33872,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63032" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64649" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
