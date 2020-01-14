@@ -11,36 +11,39 @@ import actions from './config.json'
 const regeneratorRuntime = require("regenerator-runtime");
 
 export default class App extends React.Component {
-  constructor (props) {
+
+  constructor(props){
     super(props)
 
-    console.log('actions.list = ', actions.list)
-    console.log('actions = ', actions.resolver)
+    // Printing: Temperature - City - Coutry - Humidity - Description - Error
 
-    // error handler on UI rendering failure
-    this.onError = (e, componentStack) => {}
-
-    // component to show if UI fails rendering
-    this.fallbackComponent = ({ componentStack, error }) => (
-      <React.Fragment>
-        <h1 style={{ textAlign: 'center', marginTop: '20px' }}>Something went wrong :(</h1>
-        <pre>{ componentStack + '\n' + error.message }</pre>
-      </React.Fragment>
-    )
-
+    this.state = {
+      temperature: undefined,
+      city: undefined,
+      country: undefined,
+      humidity: undefined,
+      description: undefined,
+      error: undefined
+    }
   }
-
+  
   async getWeather (e){
     e.preventDefault();
     const city = e.target.elements.city.value
     const country = e.target.elements.country.value
-    console.log(country, city)
     const api_call = await fetch(actions.WeatherApp + `?city=${city}&country=${country}`)
     // http://api.openweathermap.org/data/2.5/weather?q=lucerne,switzerland&appid=a0b6a9dab659bfe46cbd4813755b597a&units=metric
     const data = await api_call.json(); 
-    console.log(data)
+    // console.log(data)
+    this.setState({
+      temperature: data.main.temp,
+      city: data.name,
+      country: data.sys.country,
+      humidity: data.main.humidity,
+      description: data.weather[0].description,
+      error: ""
+    })
   }
-  
 
   static get propTypes () {
     return {
@@ -51,8 +54,15 @@ export default class App extends React.Component {
   render () {
     return (
       <ErrorBoundary onError={this.onError} FallbackComponent={this.fallbackComponent} >
-      <Weather  title="Hello, Adobe IO"
-                getWeather={this.getWeather}
+      <Weather
+        title="Hello, Adobe IO"
+        getWeather={this.getWeather.bind(this)}
+        temperature={this.state.temperature}
+        city={this.state.city}
+        country={this.state.country}
+        humidity={this.state.humidity}
+        description={this.state.description}
+        error={this.state.error}
       />
         {/* <pre>this.props.runtime &eq;{JSON.stringify(this.props.runtime, 0, '\t')}</pre> */}
       </ErrorBoundary>

@@ -32849,72 +32849,7 @@ exports.default = _ErrorBoundary2.default;
 exports.ErrorBoundary = _ErrorBoundary2.default;
 exports.withErrorBoundary = _ErrorBoundary.withErrorBoundary;
 exports.ErrorBoundaryFallbackComponent = _ErrorBoundaryFallbackComponent2.default;
-},{"./ErrorBoundaryFallbackComponent":"../node_modules/react-error-boundary/dist/commonjs/ErrorBoundaryFallbackComponent.js","./ErrorBoundary":"../node_modules/react-error-boundary/dist/commonjs/ErrorBoundary.js"}],"src/components/Weather.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var Weather =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Weather, _Component);
-
-  function Weather() {
-    _classCallCheck(this, Weather);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(Weather).apply(this, arguments));
-  }
-
-  _createClass(Weather, [{
-    key: "render",
-    value: function render() {
-      return _react.default.createElement("div", null, _react.default.createElement("h1", null, this.props.title), _react.default.createElement("form", {
-        onSubmit: this.props.getWeather
-      }, _react.default.createElement("input", {
-        type: "txt",
-        name: "city",
-        placeholder: "cities"
-      }), _react.default.createElement("input", {
-        type: "txt",
-        name: "country",
-        placeholder: "cities"
-      }), _react.default.createElement("button", null, "Get Weather")));
-    }
-  }]);
-
-  return Weather;
-}(_react.Component);
-
-var _default = Weather;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"../node_modules/regenerator-runtime/runtime.js":[function(require,module,exports) {
+},{"./ErrorBoundaryFallbackComponent":"../node_modules/react-error-boundary/dist/commonjs/ErrorBoundaryFallbackComponent.js","./ErrorBoundary":"../node_modules/react-error-boundary/dist/commonjs/ErrorBoundary.js"}],"../node_modules/regenerator-runtime/runtime.js":[function(require,module,exports) {
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -33642,7 +33577,73 @@ try {
   Function("r", "regeneratorRuntime = r")(runtime);
 }
 
-},{}],"src/App.js":[function(require,module,exports) {
+},{}],"src/components/Weather.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var regeneratorRuntime = require("regenerator-runtime");
+
+var Weather =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Weather, _Component);
+
+  function Weather() {
+    _classCallCheck(this, Weather);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Weather).apply(this, arguments));
+  }
+
+  _createClass(Weather, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("div", null, _react.default.createElement("h1", null, this.props.title), _react.default.createElement("form", {
+        onSubmit: this.props.getWeather.bind(this)
+      }, _react.default.createElement("input", {
+        type: "txt",
+        name: "city",
+        placeholder: "city"
+      }), _react.default.createElement("input", {
+        type: "txt",
+        name: "country",
+        placeholder: "country"
+      }), _react.default.createElement("button", null, "Get Weather"), _react.default.createElement("div", null, this.props.temperature), _react.default.createElement("div", null, this.props.city), _react.default.createElement("div", null, this.props.country), _react.default.createElement("div", null, this.props.humidity), _react.default.createElement("div", null, this.props.description)));
+    }
+  }]);
+
+  return Weather;
+}(_react.Component);
+
+exports.default = Weather;
+},{"react":"../node_modules/react/index.js","regenerator-runtime":"../node_modules/regenerator-runtime/runtime.js"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33696,24 +33697,16 @@ function (_React$Component) {
 
     _classCallCheck(this, App);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
-    console.log('actions.list = ', _config.default.list);
-    console.log('actions = ', _config.default.resolver); // error handler on UI rendering failure
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props)); // Printing: Temperature - City - Coutry - Humidity - Description - Error
 
-    _this.onError = function (e, componentStack) {}; // component to show if UI fails rendering
-
-
-    _this.fallbackComponent = function (_ref) {
-      var componentStack = _ref.componentStack,
-          error = _ref.error;
-      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("h1", {
-        style: {
-          textAlign: 'center',
-          marginTop: '20px'
-        }
-      }, "Something went wrong :("), _react.default.createElement("pre", null, componentStack + '\n' + error.message));
+    _this.state = {
+      temperature: undefined,
+      city: undefined,
+      country: undefined,
+      humidity: undefined,
+      description: undefined,
+      error: undefined
     };
-
     return _this;
   }
 
@@ -33731,25 +33724,32 @@ function (_React$Component) {
                 e.preventDefault();
                 city = e.target.elements.city.value;
                 country = e.target.elements.country.value;
-                console.log(country, city);
-                _context.next = 6;
+                _context.next = 5;
                 return fetch(_config.default.WeatherApp + "?city=".concat(city, "&country=").concat(country));
 
-              case 6:
+              case 5:
                 api_call = _context.sent;
-                _context.next = 9;
+                _context.next = 8;
                 return api_call.json();
 
-              case 9:
+              case 8:
                 data = _context.sent;
-                console.log(data);
+                // console.log(data)
+                this.setState({
+                  temperature: data.main.temp,
+                  city: data.name,
+                  country: data.sys.country,
+                  humidity: data.main.humidity,
+                  description: data.weather[0].description,
+                  error: ""
+                });
 
-              case 11:
+              case 10:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee);
+        }, _callee, this);
       }));
 
       function getWeather(_x) {
@@ -33766,7 +33766,13 @@ function (_React$Component) {
         FallbackComponent: this.fallbackComponent
       }, _react.default.createElement(_Weather.default, {
         title: "Hello, Adobe IO",
-        getWeather: this.getWeather
+        getWeather: this.getWeather.bind(this),
+        temperature: this.state.temperature,
+        city: this.state.city,
+        country: this.state.country,
+        humidity: this.state.humidity,
+        description: this.state.description,
+        error: this.state.error
       }));
     }
   }], [{
@@ -33859,7 +33865,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49893" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63032" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

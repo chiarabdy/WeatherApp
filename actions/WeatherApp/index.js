@@ -40,13 +40,14 @@ async function main (params) {
     // replace this with the api you want to access
     // if needed apikeys and tokens can be passed to the action using default parameters and dotenv variables
     const apiEndpoint = `http://api.openweathermap.org/data/2.5/weather?q=${params.city},${params.country}&appid=${params.API_KEY}&units=metric`
-    console.log(apiEndpoint)
+    // console.log(apiEndpoint)
     const response = await fetch(apiEndpoint)
     if (!response.ok) {
       throw new Error(`request to '${apiEndpoint}' failed with status code '${response.status}'`)
     }
 
     const content = await response.json()
+    // console.log(content)
 
     return {
       statusCode: 200,
