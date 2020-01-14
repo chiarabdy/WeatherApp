@@ -23,6 +23,11 @@ export default class App extends React.Component {
       country: undefined,
       humidity: undefined,
       description: undefined,
+      pressure: undefined,
+      timezone: undefined,
+      visibility: undefined,
+      windCondiiton: undefined,
+      
       error: undefined
     }
   }
@@ -42,6 +47,10 @@ export default class App extends React.Component {
         country: data.sys.country,
         humidity: data.main.humidity,
         description: data.weather[0].description,
+        pressure: data.main.pressure,
+        timezone: data.sys.timezone,
+        visibility: data.sys.visibility,
+        windCondiiton: data.wind.speed,
         error: ""
       });
     } else {
@@ -51,6 +60,10 @@ export default class App extends React.Component {
         country: undefined,
         humidity: undefined,
         description: undefined,
+        pressure: undefined,
+        timezone: undefined,
+        visibility: undefined,
+        windCondiiton: undefined,
         error: "Please enter the values."
       });
     }
@@ -72,6 +85,10 @@ export default class App extends React.Component {
         country={this.state.country}
         humidity={this.state.humidity}
         description={this.state.description}
+        pressure= {this.state.pressure} 
+        timezone= {this.state.timezone} 
+        visibility= {this.state.visibility} 
+        windCondiiton= {this.state.windCondiiton} 
         error={this.state.error}
       />
     )

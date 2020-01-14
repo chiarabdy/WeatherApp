@@ -33635,7 +33635,41 @@ function (_Component) {
         type: "txt",
         name: "country",
         placeholder: "country"
-      }), _react.default.createElement("button", null, "Get Weather"), _react.default.createElement("div", null, this.props.city && this.props.country && _react.default.createElement("p", null, "Location: ", this.props.city, ", ", this.props.country), this.props.temperature && _react.default.createElement("p", null, "Temperature: ", this.props.temperature), this.props.humidity && _react.default.createElement("p", null, "Humidity: ", this.props.humidity), this.props.description && _react.default.createElement("p", null, "Condition: ", this.props.description))));
+      }), _react.default.createElement("button", null, "Get Weather"), _react.default.createElement("div", {
+        className: "weatherApp__main"
+      }, this.props.city && this.props.country && _react.default.createElement("p", {
+        className: "weatherApp__key"
+      }, "Location: ", _react.default.createElement("span", {
+        weather__value: true
+      }, this.props.city, ", ", this.props.country)), this.props.temperature && _react.default.createElement("p", {
+        className: "weatherApp__key"
+      }, "Temperature: ", _react.default.createElement("span", {
+        className: "weather__value"
+      }, this.props.temperature)), this.props.humidity && _react.default.createElement("p", {
+        className: "weatherApp__key"
+      }, "Humidity: ", _react.default.createElement("span", {
+        className: "weather__value"
+      }, this.props.humidity)), this.props.description && _react.default.createElement("p", {
+        className: "weatherApp__key"
+      }, "Condition: ", _react.default.createElement("span", {
+        className: "weather__value"
+      }, this.props.description)), this.props.pressure && _react.default.createElement("p", {
+        className: "weatherApp__key"
+      }, "Pressure: ", _react.default.createElement("span", {
+        className: "weather__value"
+      }, this.props.pressure)), this.props.timezone && _react.default.createElement("p", {
+        className: "weatherApp__key"
+      }, "Timezone: ", _react.default.createElement("span", {
+        className: "weather__value"
+      }, this.props.timezone)), this.props.visibility && _react.default.createElement("p", {
+        className: "weatherApp__key"
+      }, "Visibility: ", _react.default.createElement("span", {
+        className: "weather__value"
+      }, this.props.timezone)), this.props.windCondition && _react.default.createElement("p", {
+        className: "weatherApp__key"
+      }, "WindCondition: ", _react.default.createElement("span", {
+        className: "weather__value"
+      }, this.props.windCondition)))));
     }
   }]);
 
@@ -33705,6 +33739,10 @@ function (_React$Component) {
       country: undefined,
       humidity: undefined,
       description: undefined,
+      pressure: undefined,
+      timezone: undefined,
+      visibility: undefined,
+      windCondiiton: undefined,
       error: undefined
     };
     return _this;
@@ -33743,6 +33781,10 @@ function (_React$Component) {
                     country: data.sys.country,
                     humidity: data.main.humidity,
                     description: data.weather[0].description,
+                    pressure: data.main.pressure,
+                    timezone: data.sys.timezone,
+                    visibility: data.sys.visibility,
+                    windCondiiton: data.wind.speed,
                     error: ""
                   });
                 } else {
@@ -33752,6 +33794,10 @@ function (_React$Component) {
                     country: undefined,
                     humidity: undefined,
                     description: undefined,
+                    pressure: undefined,
+                    timezone: undefined,
+                    visibility: undefined,
+                    windCondiiton: undefined,
                     error: "Please enter the values."
                   });
                 }
@@ -33786,6 +33832,10 @@ function (_React$Component) {
         country: this.state.country,
         humidity: this.state.humidity,
         description: this.state.description,
+        pressure: this.state.pressure,
+        timezone: this.state.timezone,
+        visibility: this.state.visibility,
+        windCondiiton: this.state.windCondiiton,
         error: this.state.error
       });
     }
@@ -33795,7 +33845,84 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = App;
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-error-boundary":"../node_modules/react-error-boundary/dist/commonjs/index.js","./components/Weather":"src/components/Weather.js","./config.json":"src/config.json","regenerator-runtime/runtime":"../node_modules/regenerator-runtime/runtime.js"}],"src/index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-error-boundary":"../node_modules/react-error-boundary/dist/commonjs/index.js","./components/Weather":"src/components/Weather.js","./config.json":"src/config.json","regenerator-runtime/runtime":"../node_modules/regenerator-runtime/runtime.js"}],"../../../../AppData/Local/@adobe/aio-cli/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../../../../AppData/Local/@adobe/aio-cli/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../../../../AppData/Local/@adobe/aio-cli/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/App.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../../AppData/Local/@adobe/aio-cli/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/bootstrap/dist/css/bootstrap.min.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../../AppData/Local/@adobe/aio-cli/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/index.js":[function(require,module,exports) {
 "use strict";
 
 var _config = _interopRequireDefault(require("./config.json"));
@@ -33805,6 +33932,10 @@ var _react = _interopRequireDefault(require("react"));
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
 var _App = _interopRequireDefault(require("./App"));
+
+require("./App.css");
+
+require("bootstrap/dist/css/bootstrap.min.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33844,7 +33975,7 @@ _reactDom.default.render(_react.default.createElement(_App.default, null), docum
 //   // tell the exc-runtime object we are done
 //   runtime.done()
 // }
-},{"./config.json":"src/config.json","react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./App":"src/App.js"}],"../../../../AppData/Local/@adobe/aio-cli/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./config.json":"src/config.json","react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./App":"src/App.js","./App.css":"src/App.css","bootstrap/dist/css/bootstrap.min.css":"../node_modules/bootstrap/dist/css/bootstrap.min.css"}],"../../../../AppData/Local/@adobe/aio-cli/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -33872,7 +34003,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64649" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65211" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
